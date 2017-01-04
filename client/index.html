@@ -1,0 +1,66 @@
+<!doctype html>
+<html style="height: 100%">
+<head>
+  <meta charset="utf-8">
+  <title>Vue first try</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body style="background-image: url('https://coderexample.com/wp-content/uploads/2015/10/ssss.gif');background-position: center center; background-repeat: no-repeat; background-color: #f9f9fa;">
+  
+  <div id="api" class="wrapper">
+    <div class="row">
+      <div class="col-md-3" style="margin: 15px">
+      <ul class="list-group" v-if="people.length" style="text-align: center;">
+        <li class="list-group-item" v-for="person in people" style="background-color: transparent;">
+        <p class="lead" style="background-color: white; border-radius: 4px;">{{person.firstname}} {{person.lastname}}</p><button class="btn btn-danger" v-on:click="removePerson($index)">Delete</button>
+        <button class="btn btn-primary" v-on:click="modifyPerson($index)">Modify</button>
+        </li>
+      </ul>
+      <p class="lead" style="text-align: center;" v-else>No one found :(</p>
+      </div>
+      <div class="col-md-5" id="add" style="margin-top: 15px;">
+        <div class="form-group">
+          <div class="col-md-10" style="margin-bottom: inherit;">
+            <input v-model="person.firstname" placeholder="firstname" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-10" style="margin-bottom: inherit;">
+            <input v-model="person.lastname" placeholder="lastname" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-10">
+            <button class="btn btn-success" v-on:click="addPerson" style="margin-bottom: 15px;">Add person</button>
+            <p class="lead">{{person.firstname}} {{person.lastname}}</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-4" id="modify" style="display: none; margin-top: 15px;">
+        <div class="form-group">
+          <div class="col-md-10" style="margin-bottom: inherit;">
+            <input v-model="person.firstname" placeholder="firstname" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-10" style="margin-bottom: inherit;">
+            <input v-model="person.lastname" placeholder="lastname" class="form-control">
+            <input v-model="index" type="hidden" value="" id="index">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-10">
+            <button class="btn btn-success" v-on:click="doModify" style="margin-bottom: 15px;">Update person</button>
+            <p class="lead">{{person.firstname}} {{person.lastname}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28-csp/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+  <script src="app.js">
+  </script>
+</body>

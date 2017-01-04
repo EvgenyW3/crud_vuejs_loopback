@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongodb": {
+    "host": "127.0.0.1",
+    "database": "test",
+    "username": "",
+    "password": "",
+    "port": 27017,
+    "name": "mongodb",
+    "connector": "mongodb"
+   }
+}
