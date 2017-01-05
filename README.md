@@ -6,5 +6,6 @@ First try playing with loopback and vue.js(v1)
 * navigate to project's directory
 * run npm install
 * run npm start (make sure your mongodb server is running)
+
 ## Heroku:
 https://vue-crud.herokuapp.com/
