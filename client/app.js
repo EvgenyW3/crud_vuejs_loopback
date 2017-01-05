@@ -16,6 +16,8 @@ new Vue({
       //Fetching all data from api
       this.$http.get('/api/people').then(function(response){
         this.$set('people', response.body);
+      }, function(err){
+        console.log(err);
       });
     },
     addPerson: function(){
@@ -23,9 +25,11 @@ new Vue({
       if(this.person.firstname && this.person.lastname) {
         this.$http.post('api/people', this.person).then(function(response){
           //Adding just created person to people array
-          this.people.push(this.person);
+          this.people.push(response.body);
           //Cleaning input fields
           this.person = {firstname: '', lastname: ''};
+        }, function(err){
+          console.log(err);
         });
       }
     },
@@ -33,6 +37,8 @@ new Vue({
       //Deleting a particular person from db and people array
       this.$http.delete('api/people/'+this.people[index].id).then(function(response){
         this.people.splice(index, 1);
+      }, function(err){
+        console.log(err);
       });
     },
     modifyPerson: function(index) {
@@ -50,16 +56,15 @@ new Vue({
       //Calling api to modify existing object
       if(this.person.firstname && this.person.lastname) {
         this.$http.put('api/people/'+this.people[index].id, this.person).then(function(response){
-          this.people[index].firstname = this.person.firstname;
-          this.people[index].lastname = this.person.lastname;
+          this.people[index].firstname = response.body.firstname;
+          this.people[index].lastname = response.body.lastname;
           this.person = {firstname: '', lastname: ''};
           document.getElementById("add").style.display = "block";
           document.getElementById("modify").style.display = "none";
+        }, function(err){
+          console.log(err);
         });
       }
     }
   }
 });
-
-
-
