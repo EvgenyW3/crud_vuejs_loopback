@@ -20,7 +20,7 @@
       </ul>
       <p class="lead" style="text-align: center;" v-else>No one found :(</p>
       </div>
-      <div class="col-md-5" id="add" style="margin-top: 15px;">
+      <div class="col-md-5" id="add">
       <form v-on:submit.prevent="addPerson">
         <div class="form-group">
           <div class="col-md-10" style="margin-bottom: inherit;">
@@ -40,7 +40,7 @@
         </div>
         </form>
       </div>
-      <div class="col-md-4" id="modify" style="display: none; margin-top: 15px;">
+      <div class="col-md-4" id="modify" style="display: none;">
       <form v-on:submit.prevent="doModify">
         <div class="form-group">
           <div class="col-md-10" style="margin-bottom: inherit;">
